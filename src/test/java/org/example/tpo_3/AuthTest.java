@@ -51,7 +51,7 @@ public class AuthTest {
         drivers.parallelStream().forEach(webDriver -> {
             profileComponent = new ProfileComponent(webDriver);
             authComponent = new AuthComponent(webDriver);
-            profileComponent.logout();
+//            profileComponent.logout();
 //            Assert.assertTrue(authComponent.isSignInButtonRendered());
         });
     }

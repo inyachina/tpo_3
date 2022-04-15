@@ -5,16 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class AuthComponent extends Page {
-    @FindBy(xpath = "//*[@id=\"signin-form\"]/div[1]/div/div/input")
+    @FindBy(xpath = "//input[@placeholder='Логин']")
     private WebElement loginInput;
 
-    @FindBy(xpath = "//*[@id=\"signin-form\"]/div[2]/div/div/input")
+    @FindBy(xpath = "//input[@placeholder='Пароль']")
     private WebElement passwordInput;
 
-    @FindBy(xpath = "//*[@id=\"signin-form\"]/div[7]/button")
+    @FindBy(xpath = "//span[text()='Войти']/parent::button")
     private WebElement signInButton;
 
-    @FindBy(xpath = "//*[@id=\"signin-form\"]/div[5]/span")
+    @FindBy(xpath = "//span[text()='Ошибка. Вы ввели неверные данные авторизации']")
     private WebElement errorText;
 
     public AuthComponent(WebDriver driver) {
