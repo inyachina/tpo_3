@@ -20,12 +20,18 @@ public class Utils {
     public static final String CHROME_SYSTEM_PROPERTY_PATH = "drivers/chromedriver";
     public static final String FIREFOX_SYSTEM_PROPERTY_NAME = "webdriver.gecko.driver";
     public static final String FIREFOX_SYSTEM_PROPERTY_PATH = "drivers/geckodriver";
+
     public static final String BASE_URL = "https://pikabu.ru/";
+    public static final String BEST_URL = "/best";
+    public static final String NEW_URL = "/new";
+    public static final String SUBS_URL = "/subs";
+    public static final String COMMUNITIES_URL = "/communities";
 
-    public static final String CORRECT_LOGIN = "abayLoh";
-    public static final String CORRECT_PASSWORD = "abayLoh228";
+    public static final String CORRECT_LOGIN = "zpepa";
+    public static final String CORRECT_PASSWORD = "язузф228";
 
-    public static final String WRONG_LOGIN = "abayNeLoh";
+    public static final String WRONG_LOGIN = "ninininin";
+    public static final String WRONG_PASSWORD = "ninininin228";
 
     public static List<WebDriver> getDrivers() {
         List<WebDriver> drivers = new ArrayList<>();
@@ -79,10 +85,9 @@ public class Utils {
     }
 
     public static WebElement getElementBySelector(WebDriver driver, By selector) {
-        WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(1000));
+        WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(5000));
         return driverWait.until(ExpectedConditions.visibilityOfElementLocated(selector));
     }
-
 
 }
 

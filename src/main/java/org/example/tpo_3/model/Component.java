@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 @Data
-public class Page {
+public class Component {
     protected WebDriver driver;
 
-    public Page(WebDriver driver) {
+    public Component(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
