@@ -24,7 +24,8 @@ public class Utils {
 
     public static final String CORRECT_LOGIN = "abayLoh";
     public static final String CORRECT_PASSWORD = "abayLoh228";
-    public static final String WRONG_PASSWORD = "abayNeLoh";
+
+    public static final String WRONG_LOGIN = "abayNeLoh";
 
     public static List<WebDriver> getDrivers() {
         List<WebDriver> drivers = new ArrayList<>();
@@ -71,6 +72,17 @@ public class Utils {
         System.setProperty(CHROME_SYSTEM_PROPERTY_NAME, CHROME_SYSTEM_PROPERTY_PATH);
         System.setProperty(FIREFOX_SYSTEM_PROPERTY_NAME, FIREFOX_SYSTEM_PROPERTY_PATH);
     }
+
+    public static void waitUntilPageReload(WebDriver driver) {
+        WebDriverWait waitDriver = new WebDriverWait(driver, Duration.ofSeconds(5000));
+        waitDriver.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+    }
+
+    public static WebElement getElementBySelector(WebDriver driver, By selector) {
+        WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(1000));
+        return driverWait.until(ExpectedConditions.visibilityOfElementLocated(selector));
+    }
+
 
 }
 

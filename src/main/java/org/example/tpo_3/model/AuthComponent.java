@@ -1,5 +1,7 @@
 package org.example.tpo_3.model;
 
+import org.example.tpo_3.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,9 +15,6 @@ public class AuthComponent extends Page {
 
     @FindBy(xpath = "//*[@id=\"signin-form\"]/div[7]/button")
     private WebElement signInButton;
-
-    @FindBy(xpath = "//*[@id=\"signin-form\"]/div[5]/span")
-    private WebElement errorText;
 
     public AuthComponent(WebDriver driver) {
         super(driver);
@@ -34,6 +33,7 @@ public class AuthComponent extends Page {
     }
 
     public String getErrorMessage() {
+        WebElement errorText = Utils.getElementBySelector(driver, By.xpath("//*[@id=\"signin-form\"]/div[5]/span"));
         return errorText.getText();
     }
 
