@@ -4,13 +4,17 @@ import org.example.tpo_3.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class ProfileComponent extends Page {
-    @FindBy(xpath = "/html/body/div[1]/div[1]/div[1]/aside/div[1]/div[1]/div/div[2]/div[1]/a")
+    @FindBy(xpath = "//a[@class='user__nick user__nick_big']")
     private WebElement loginName;
 
-    @FindBy(xpath = "/html/body/div[1]/div[1]/div[1]/aside/div[1]/div[1]/div/div[2]/div[2]")
+    @FindBy(xpath = "//div[text()='выйти']")
+    private WebElement logOutDiv;
+
+    @FindBy(xpath = "//div[@class='popup__footer']/child::button[text()='Выйти']")
     private WebElement logOutButton;
 
     public ProfileComponent(WebDriver driver) {

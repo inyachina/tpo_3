@@ -7,13 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class AuthComponent extends Page {
-    @FindBy(xpath = "//*[@id=\"signin-form\"]/div[1]/div/div/input")
+    @FindBy(xpath = "//input[@placeholder='Логин']")
     private WebElement loginInput;
 
-    @FindBy(xpath = "//*[@id=\"signin-form\"]/div[2]/div/div/input")
+    @FindBy(xpath = "//input[@placeholder='Пароль']")
     private WebElement passwordInput;
 
-    @FindBy(xpath = "//*[@id=\"signin-form\"]/div[7]/button")
+    @FindBy(xpath = "//span[text()='Войти']/parent::button")
     private WebElement signInButton;
 
     public AuthComponent(WebDriver driver) {

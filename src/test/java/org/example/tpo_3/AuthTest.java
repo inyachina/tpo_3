@@ -43,10 +43,18 @@ public class AuthTest {
             authComponent.setPassword(Utils.CORRECT_PASSWORD);
             authComponent.clickSignInButton();
             Assert.assertEquals(profileComponent.getLogin(), Utils.CORRECT_LOGIN);
-//            profileComponent.logout();
-//            Assert.assertTrue(authComponent.isSignInButtonRendered());
         });
     }
+
+//    @Test
+//    public void logoutTest() {
+//        drivers.parallelStream().forEach(webDriver -> {
+//            profileComponent = new ProfileComponent(webDriver);
+//            authComponent = new AuthComponent(webDriver);
+//            profileComponent.logout();
+//            Assert.assertTrue(authComponent.isSignInButtonRendered());
+//        });
+//    }
 
     @Test
     public void wrongLoginTest() {
