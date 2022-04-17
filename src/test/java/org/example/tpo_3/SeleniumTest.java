@@ -4,8 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 
+import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public abstract class SeleniumTest {
     protected List<WebDriver> drivers;
@@ -16,7 +16,7 @@ public abstract class SeleniumTest {
         drivers = Utils.getDrivers();
         drivers.forEach(webDriver -> {
             webDriver.get(Utils.BASE_URL);
-            webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         });
     }
 

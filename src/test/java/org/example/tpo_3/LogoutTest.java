@@ -4,35 +4,25 @@ import org.example.tpo_3.model.main_page.AuthComponent;
 import org.example.tpo_3.model.main_page.ProfileComponent;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-public class LogoutTest {
-    public List<WebDriver> drivers;
-
-    public AuthComponent authComponent;
-    public ProfileComponent profileComponent;
+public class LogoutTest extends SeleniumTest {
 
     @Test
     public void logOutTest() {
-        Utils.prepareDrivers();
-        drivers = Utils.getDrivers();
         drivers.forEach(webDriver -> {
-            webDriver.get(Utils.BASE_URL);
-            webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-            profileComponent = new ProfileComponent(webDriver);
-            authComponent = new AuthComponent(webDriver);
-            authComponent.logIn();
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            profileComponent.logout();
-            Assert.assertTrue(authComponent.isSignInButtonRendered());
-            webDriver.quit();
+            Utils.passAuth(webDriver);
+
+            ProfileComponent profileComponent = new ProfileComponent(webDriver);
+            WebElement logoutButton = profileComponent.getLogoutButton();
+            logoutButton.click();
+            WebElement confirmLogoutButton = profileComponent.getConfirmButton();
+            confirmLogoutButton.click();
+
+            Utils.waitUntilPageReload(webDriver);
+            AuthComponent authComponent = new AuthComponent(webDriver);
+            WebElement signInButton = authComponent.getSignInButton();
+            Assert.assertNotNull(signInButton);
         });
     }
 }

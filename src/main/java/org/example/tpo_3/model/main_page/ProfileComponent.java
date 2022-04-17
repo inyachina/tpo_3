@@ -11,12 +11,8 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class ProfileComponent extends Component {
-    @FindBy(xpath = "/html/body/div[1]/div[1]/div[1]/aside/div[1]/div[1]/div/div[2]/div[1]/a")
+    @FindBy(xpath = "//a[contains(@class, 'user__nick')]/parent::div[contains(@class, 'user__info')]")
     private WebElement loginName;
-
-    @FindBy(xpath = "/html/body/div[1]/div[1]/div[1]/aside/div[1]/div[1]/div/div[2]/div[2]")
-    private WebElement logOutButton;
-
 
     public ProfileComponent(WebDriver driver) {
         super(driver);
@@ -26,17 +22,19 @@ public class ProfileComponent extends Component {
         return loginName.getText();
     }
 
-    public WebElement getAddPostButton() {
-        return Utils.getElementBySelector(driver, By.xpath("/html/body/div[1]/div[1]/div[1]/aside/div[2]/a[1]"));
+    public WebElement getAddPostButton(){
+        return Utils.getElementBySelector(driver, By.xpath("//a[contains(@class, 'button_add')]"));
     }
 
-    public void logout() {
-        logOutButton.click();
-        WebElement confirmLogOutButton = Utils.getElementBySelector(driver, By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/button[1]"));
-        confirmLogOutButton.click();
+    public WebElement getSavedListButton() {
+        return Utils.getElementBySelector(driver, By.xpath("//a[text()='Сохраненное']"));
     }
 
-    public void waitUntilLoaded() {
+    public WebElement getLogoutButton() {
+        return Utils.getElementBySelector(driver, By.xpath("//div[contains(@class, 'user__exit')]"));
+    }
 
+    public WebElement getConfirmButton() {
+        return Utils.getElementBySelector(driver, By.xpath("//button[text()='Выйти']"));
     }
 }

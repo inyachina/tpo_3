@@ -2,7 +2,7 @@ package org.example.tpo_3.main_page;
 
 import org.example.tpo_3.SeleniumTest;
 import org.example.tpo_3.Utils;
-import org.example.tpo_3.model.main_page.HeaderComponent;
+import org.example.tpo_3.model.HeaderComponent;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;

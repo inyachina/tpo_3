@@ -1,5 +1,6 @@
 package org.example.tpo_3;
 
+import org.example.tpo_3.model.main_page.AuthComponent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -21,11 +22,10 @@ public class Utils {
     public static final String FIREFOX_SYSTEM_PROPERTY_NAME = "webdriver.gecko.driver";
     public static final String FIREFOX_SYSTEM_PROPERTY_PATH = "drivers/geckodriver";
 
-    public static final String BASE_URL = "https://pikabu.ru/";
-    public static final String BEST_URL = "/best";
-    public static final String NEW_URL = "/new";
-    public static final String SUBS_URL = "/subs";
-    public static final String COMMUNITIES_URL = "/communities";
+    public static final String BASE_URL = "https://pikabu.ru";
+
+    public static final String ADD_URL = "/add";
+    public static final String SAVED_POSTS_URL = "/saved-stories";
 
     public static final String CORRECT_LOGIN = "zpepa";
     public static final String CORRECT_PASSWORD = "язузф228";
@@ -80,14 +80,20 @@ public class Utils {
     }
 
     public static void waitUntilPageReload(WebDriver driver) {
-        WebDriverWait waitDriver = new WebDriverWait(driver, Duration.ofSeconds(5000));
+        WebDriverWait waitDriver = new WebDriverWait(driver, Duration.ofSeconds(10));
         waitDriver.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
 
     public static WebElement getElementBySelector(WebDriver driver, By selector) {
-        WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(5000));
+        WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(5), Duration.ofMillis(500));
         return driverWait.until(ExpectedConditions.visibilityOfElementLocated(selector));
     }
 
+
+    public static void passAuth(WebDriver webDriver) {
+        AuthComponent authComponent = new AuthComponent(webDriver);
+        authComponent.logIn();
+        authComponent.waitUntilAuthorized();
+    }
 }
 
