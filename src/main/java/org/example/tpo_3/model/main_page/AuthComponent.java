@@ -14,10 +14,10 @@ import java.time.Duration;
 
 @Getter
 public class AuthComponent extends Component {
-    @FindBy(xpath = "//input[@placeholder='Логин']")
+    @FindBy(xpath = "//input[@name='username']")
     private WebElement loginInput;
 
-    @FindBy(xpath = "//input[@placeholder='Пароль']")
+    @FindBy(xpath = "//input[@name='password']")
     private WebElement passwordInput;
 
     @FindBy(xpath = "//span[text()='Войти']/parent::button")

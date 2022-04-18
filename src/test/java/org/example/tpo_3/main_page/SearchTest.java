@@ -20,6 +20,7 @@ public class SearchTest extends SeleniumTest {
             searchButton.click();
             Utils.waitUntilPageReload(webDriver);
             Assert.assertTrue(webDriver.getCurrentUrl().contains("search"));
+            Assert.assertTrue(webDriver.getCurrentUrl().contains("тест"));
         });
     }
 }

@@ -20,6 +20,7 @@ public class AuthTest extends SeleniumTest {
             authComponent.setLogin(Utils.CORRECT_LOGIN);
             authComponent.setPassword(Utils.CORRECT_PASSWORD);
             authComponent.clickSignInButton();
+            authComponent.waitUntilAuthorized();
             Assert.assertEquals(profileComponent.getLogin(), Utils.CORRECT_LOGIN);
         });
     }
